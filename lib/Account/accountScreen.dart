@@ -29,7 +29,6 @@ class _AccountScreen extends State<AccountScreen>
   String? currentPass, newPass, conPass;
 
   Future getterStorage() async {
-    
     try {
       await storage.CounterStorage().readCounter().then((context) {
         if (context != null)
@@ -75,7 +74,6 @@ class _AccountScreen extends State<AccountScreen>
         if (newPass == conPass) {
           Strapi.StrapiService()
               .updatePassword(userData['id'].toString(), newPass!);
-              // Strapi.StrapiService().recordRoom('1', '1');
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => NavigationHomeScreen()),
@@ -179,14 +177,16 @@ class _AccountScreen extends State<AccountScreen>
                         SizedBox(
                           height: 30.0,
                         ),
-                        userData != null ? Text(
-                          "${userData['fullname'].toString()}",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: AppTheme.grey,
-                            fontSize: 20,
-                          ),
-                        ) : CircularProgressIndicator(),
+                        userData != null
+                            ? Text(
+                                "${userData['fullname'].toString()}",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: AppTheme.grey,
+                                  fontSize: 20,
+                                ),
+                              )
+                            : CircularProgressIndicator(),
                         SizedBox(
                           height: 30.0,
                         ),
@@ -255,14 +255,14 @@ class _AccountScreen extends State<AccountScreen>
   }
 
   Widget textId() {
-    return userData!=null ? Text(
-      "${userData['id_number'].toString()}",
-      style: TextStyle(
-        fontWeight: FontWeight.w600,
-        color: AppTheme.grey,
-        fontSize: 20,
-      )
-    ) : CircularProgressIndicator();
+    return userData != null
+        ? Text("${userData['id_number'].toString()}",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              color: AppTheme.grey,
+              fontSize: 20,
+            ))
+        : CircularProgressIndicator();
   }
 
   Widget _buildComposer(String displayText, String variable) {

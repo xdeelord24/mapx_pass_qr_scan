@@ -126,6 +126,7 @@ class _AccountScreenState extends State<AccountScreen> {
               padding:
                   const EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
               child: TextField(
+                
                 maxLines: null,
                 onChanged: (String txt) {},
                 style: TextStyle(
